@@ -104,7 +104,7 @@ def crear_animacion(fig, ax, datos):
     rastroA, = ax.plot([], [], "-", color="#185FA5", alpha=0.7, lw=2, label="Proyectil A (0, 0)")
 
     # punto de colision teorico
-    ax.plot(*d["punto"], "*", color="#1E8E3E", markersize=16,
+    ax.plot(*d["punto"], ".", color="#1E8E3E", markersize=18,
             label=f"Colision teorica ({d['punto'][0]:.1f}, {d['punto'][1]:.1f})")
 
     info_colision = {"colision": sim["colision"], "pos": sim["pos_colision"]}

@@ -1,4 +1,3 @@
-
 import numpy as np
 
 G = 9.81 
@@ -10,7 +9,7 @@ def pos_proyectil_B(t, D, h, v, phi):
 
 
 def pos_proyectil_A(t, u, theta, T):
-    """Posicion (x, y) del proyectil A (sale de (0,0) en t=T). None si aun no salio."""
+    """Posicion (x, y) del proyectil A (sale de (0,0) en t=T). None si aun no ha salido."""
     tau = t - T
     if tau < 0:
         return None
@@ -36,6 +35,7 @@ def tiempo_vuelo_proyectil_B(h, v, phi):
 # ---------------------------------------------------------------------------
 #  SOLUCION ANALITICA (referencia)
 # ---------------------------------------------------------------------------
+
 def resolver_analitico(D, h, v, phi, T, t_estrella):
     """Solucion exacta de u y theta. Sirve para validar los metodos numericos."""
     tau = t_estrella - T
@@ -50,6 +50,7 @@ def resolver_analitico(D, h, v, phi, T, t_estrella):
 # ---------------------------------------------------------------------------
 #  ELECCION AUTOMATICA DEL INSTANTE DE COLISION t*
 # ---------------------------------------------------------------------------
+
 def elegir_t_estrella(D, h, v, phi, T):
 
     t_suelo = tiempo_vuelo_proyectil_B(h, v, phi)
@@ -99,6 +100,7 @@ def elegir_t_estrella(D, h, v, phi, T):
 # ---------------------------------------------------------------------------
 #  FUNCION OBJETIVO (reduce el problema a una sola incognita: theta)
 # ---------------------------------------------------------------------------
+
 def construir_funcion_objetivo(D, h, v, phi, T, t_estrella):
     """
     Se fija u*cos(theta) = x1/tau (velocidad horizontal del proyectil A para
@@ -129,6 +131,7 @@ def u_desde_theta(theta, D, h, v, phi, T, t_estrella):
 # ---------------------------------------------------------------------------
 #  METODOS NUMERICOS de busqueda de raiz para resolver F(theta) = 0
 # ---------------------------------------------------------------------------
+
 def biseccion(F, a, b, tol=1e-8, max_iter=200):
     """Robusto: parte el intervalo a la mitad. Necesita cambio de signo."""
     historial = []

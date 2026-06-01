@@ -1,5 +1,3 @@
-
-
 import numpy as np
 
 from PyQt5 import QtWidgets, QtCore
@@ -168,7 +166,7 @@ class VentanaPrincipal(QtWidgets.QMainWindow):
 
     # ---------------- animacion (delegada al modulo simulacion) ----------------
     def _animar(self):
-        if self._anim is not None:
+        if self._anim is not None and self._anim.event_source is not None:
             self._anim.event_source.stop()
 
         self._anim, info = simulacion.crear_animacion(self.fig, self.ax, self._datos)
